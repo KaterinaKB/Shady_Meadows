@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "shady-meadows"
+version = "0.1.0"
+description = ""
+authors = ["Voronova Ekaterina <e.b.kochekova@gmail.com>"]
+readme = "README.md"
+packages = [{include = "shady_meadows"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+selene = "2.0.0rc2"
+pytest = "^7.4.0"
+allure-pytest = "^2.13.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
