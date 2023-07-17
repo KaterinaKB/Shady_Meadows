@@ -1,0 +1,1 @@
+unavailable_dates = 'The room dates are either invalid or are already booked for one or more of the dates that you have selected.'

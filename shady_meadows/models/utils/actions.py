@@ -6,9 +6,7 @@ from selene.core.entity import Element
 def click_hold_and_move(target_element: Element):
     def func(element: Element):
         located_sourse_element = element.locate()
-        print(element)
         located_target_element = target_element.locate()
-        print(target_element)
         driver = element.config.driver
         actions: ActionChains = ActionChains(driver)
 
