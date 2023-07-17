@@ -11,6 +11,7 @@ python = "^3.10"
 selene = "2.0.0rc2"
 pytest = "^7.4.0"
 allure-pytest = "^2.13.2"
+faker = "^19.1.0"
 
 
 [build-system]
