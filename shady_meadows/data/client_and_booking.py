@@ -2,10 +2,11 @@ import dataclasses
 from datetime import datetime, timedelta
 
 
-def create_booking_dates(date):
+def generate_booking_dates(date):
     start_date = datetime.today().replace(day=date)
     end_date = start_date + timedelta(days=1)
     return start_date, end_date
+
 @dataclasses.dataclass
 class Client:
     firstname: str
@@ -14,11 +15,6 @@ class Client:
     phone: str
     subject: str
     message: str
-
-@dataclasses.dataclass
-class BookingDates:
-    start_date: datetime.date
-    end_date: datetime.date
 
 
 client = Client(
