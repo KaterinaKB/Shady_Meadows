@@ -1,6 +1,5 @@
 from selene import browser, have, be
 from shady_meadows.models.utils import actions
-from shady_meadows.data import client_and_booking as data
 
 
 class BookingForm:
