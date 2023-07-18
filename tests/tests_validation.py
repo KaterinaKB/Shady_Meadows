@@ -22,7 +22,7 @@ def test_validation_firstname_in_booking_form(firstname, expected_error):
     booking_form = BookingForm()
     main_page.open()
     main_page.press_open_booking_button()
-    start_date, end_date = generate_booking_dates(27)
+    start_date, end_date = generate_booking_dates(27, 1)
 
     # WHEN
     (
@@ -52,7 +52,7 @@ def test_validation_lastname_in_booking_form(lastname, expected_error):
     booking_form = BookingForm()
     main_page.open()
     main_page.press_open_booking_button()
-    start_date, end_date = generate_booking_dates(27)
+    start_date, end_date = generate_booking_dates(27, 1)
 
     # WHEN
     (
@@ -80,7 +80,7 @@ def test_validation_email_in_booking_form(email, expected_error):
     booking_form = BookingForm()
     main_page.open()
     main_page.press_open_booking_button()
-    start_date, end_date = generate_booking_dates(27)
+    start_date, end_date = generate_booking_dates(27, 1)
 
     # WHEN
     (
@@ -109,7 +109,7 @@ def test_validation_phone_in_booking_form(phone, expected_error):
     booking_form = BookingForm()
     main_page.open()
     main_page.press_open_booking_button()
-    start_date, end_date = generate_booking_dates(27)
+    start_date, end_date = generate_booking_dates(27, 1)
 
     # WHEN
     (

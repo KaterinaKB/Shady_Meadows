@@ -2,9 +2,9 @@ import dataclasses
 from datetime import datetime, timedelta
 
 
-def generate_booking_dates(date):
-    start_date = datetime.today().replace(day=date)
-    end_date = start_date + timedelta(days=1)
+def generate_booking_dates(start_date, duration):
+    start_date = datetime.today().replace(day=start_date)
+    end_date = start_date + timedelta(days=duration)
     return start_date, end_date
 
 @dataclasses.dataclass

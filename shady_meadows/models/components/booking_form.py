@@ -19,6 +19,7 @@ class BookingForm:
             "button"
         )
         self.error_message = browser.element('.alert.alert-danger')
+        self.cancel_reservation = browser.all(".book-room").element_by(have.exact_text("Cancel"))
 
     def fill_firstname(self, firstname):
         self.firstname.type(firstname)
@@ -60,3 +61,7 @@ class BookingForm:
 
     def check_error_text(self, text):
         self.error_message.should(have.text(text))
+
+    def check_total_price(self, duration):
+        element = browser.element(f'[title="{duration} night(s) - £{duration * 100}"]')
+        element.should(be.visible)
