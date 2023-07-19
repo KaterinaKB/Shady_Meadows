@@ -43,8 +43,8 @@ class BookingForm:
 
     @allure.step('Выбираем даты бронирования: с {start_date} по {end_date}')
     def choose_dates(self, start_date, end_date):
-        source_day = self.date.element_by(have.exact_text(start_date.strftime("%d")))
-        target_day = self.date.element_by(have.exact_text(end_date.strftime("%d")))
+        source_day = self.date.element_by(have.exact_text(start_date[8:]))
+        target_day = self.date.element_by(have.exact_text(end_date[8:]))
         source_day.perform(actions.click_hold_and_move(target_day))
         return self
 
@@ -60,7 +60,7 @@ class BookingForm:
     def check_if_booking_dates_are_right(self, start_date, end_date):
         self.dates_in_confirmation.should(
             have.text(
-                f"{start_date.strftime('%Y-%m-%d')} - {end_date.strftime('%Y-%m-%d')}"
+                f"{start_date} - {end_date}"
             )
         )
 
