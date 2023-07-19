@@ -60,7 +60,7 @@ class BookingForm:
     def check_if_booking_dates_are_right(self, start_date, end_date):
         self.dates_in_confirmation.should(
             have.text(
-                f"{start_date} - {end_date}"
+                f"{start_date.strftime('%Y-%m-%d')} - {end_date.strftime('%Y-%m-%d')}"
             )
         )
 
