@@ -21,7 +21,7 @@ def setup_browser():
     # browser.config.driver_options = options
     #
     # browser.config.driver_remote_url = (
-    #     f'https://{project_config.login}:{project_config.password}@'
+    #     f'https://{project_config.login_field}:{project_config.password_field}@'
     #     f'selenoid.autotests.cloud/wd/hub'
     # )
 
