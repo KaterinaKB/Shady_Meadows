@@ -5,7 +5,8 @@ from datetime import datetime, timedelta
 def generate_booking_dates(start_date, duration):
     start_date = datetime.today().replace(day=start_date)
     end_date = start_date + timedelta(days=duration)
-    return start_date, end_date
+    return start_date.strftime('%Y-%m-%d'), end_date.strftime('%Y-%m-%d')
+
 
 @dataclasses.dataclass
 class Client:
