@@ -6,7 +6,7 @@ class ProjectConfig(pydantic.BaseSettings):
     """
     A project config class to store all project specific settings
     to be used both in tests and core part of the framework,
-    like models, data, utils, etc. – i.e. serves as cross-cutting concern.
+    like model, data, utils, etc. – i.e. serves as cross-cutting concern.
     Normally to be stored in a separate file.
     """
 
