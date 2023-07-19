@@ -1,4 +1,6 @@
+import allure
 import pytest
+from allure_commons.types import Severity
 
 from shady_meadows.model.application import app
 from shady_meadows.data.client_and_booking import client
@@ -6,7 +8,13 @@ from shady_meadows.data.client_and_booking import generate_booking_dates
 from shady_meadows.data import errors as e
 
 
+@allure.epic('Бронирование')
+@allure.feature('Валидация полей формы бронирования')
 class TestsValidationOfBookingForm:
+    @allure.story('Валидация поля Имя')
+    @allure.severity(Severity.NORMAL)
+    @allure.label('owner', 'Voronova K.')
+    @allure.title('Тест отображения ошибки "{expected_error}", используемое тестовое имя: "{firstname}"')
     @pytest.mark.parametrize(
         "firstname, expected_error",
         [
@@ -38,6 +46,10 @@ class TestsValidationOfBookingForm:
         # THEN
         app.booking_form.check_error_text(expected_error)
 
+    @allure.story('Валидация поля Фамилия')
+    @allure.severity(Severity.NORMAL)
+    @allure.label('owner', 'Voronova K.')
+    @allure.title('Тест отображения ошибки "{expected_error}", используемая тестовая фамилия: "{lastname}"')
     @pytest.mark.parametrize(
         "lastname, expected_error",
         [
@@ -69,6 +81,10 @@ class TestsValidationOfBookingForm:
         # THEN
         app.booking_form.check_error_text(expected_error)
 
+    @allure.story('Валидация поля Электронная почта')
+    @allure.severity(Severity.NORMAL)
+    @allure.label('owner', 'Voronova K.')
+    @allure.title('Тест отображения ошибки "{expected_error}", используемая тестовая э.почта: "{email}"')
     @pytest.mark.parametrize(
         "email, expected_error",
         [("", e.email_is_blank), ("test.ru", e.wrong_format_of_email)],
@@ -92,6 +108,10 @@ class TestsValidationOfBookingForm:
         # THEN
         app.booking_form.check_error_text(expected_error)
 
+    @allure.story('Валидация поля Телефон')
+    @allure.severity(Severity.NORMAL)
+    @allure.label('owner', 'Voronova K.')
+    @allure.title('Тест отображения ошибки "{expected_error}", используемый тестовый телефон: "{phone}"')
     @pytest.mark.parametrize(
         "phone, expected_error",
         [
@@ -123,6 +143,10 @@ class TestsValidationOfBookingForm:
         # THEN
         app.booking_form.check_error_text(expected_error)
 
+
+    @allure.severity(Severity.NORMAL)
+    @allure.label('owner', 'Voronova K.')
+    @allure.title('Тест отображения ошибки при незаполненных датах бронирования')
     def test_validation_dates_in_booking_form(self):
         # GIVEN
         app.main_page.open()

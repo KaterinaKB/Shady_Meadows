@@ -1,9 +1,18 @@
+import allure
+from allure_commons.types import Severity
+
 from shady_meadows.model.application import app
 from shady_meadows.data.client_and_booking import client
 from project_config import project_config
 
 
+@allure.epic('Сообщения')
+@allure.feature('Отправка сообщения')
 class TestsMessages:
+
+    @allure.severity(Severity.BLOCKER)
+    @allure.label('owner', 'Voronova K.')
+    @allure.title('Тест отправки сообщения в администрацию отеля')
     def test_message_sending(self):
         # GIVEN
         app.main_page.open()
@@ -22,6 +31,9 @@ class TestsMessages:
         # THEN
         app.message_form.check_reply_to_message(client.firstname, client.subject)
 
+    @allure.severity(Severity.CRITICAL)
+    @allure.label('owner', 'Voronova K.')
+    @allure.title('Тест корректности содержимого сообщения от клиента на странице администратора')
     def test_receiving_message_by_admin(self):
         # GIVEN
         app.main_page.open()
