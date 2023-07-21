@@ -1,3 +1,8 @@
+[tool.pytest.ini_options]
+addopts = "--clean-alluredir --alluredir=allure-results"
+disable_test_id_escaping_and_forfeit_all_rights_to_community_support = 'True'
+
+
 [tool.poetry]
 name = "shady-meadows"
 version = "0.1.0"
@@ -6,13 +11,17 @@ authors = ["Voronova Ekaterina <e.b.kochekova@gmail.com>"]
 readme = "README.md"
 packages = [{include = "shady_meadows"}]
 
+
 [tool.poetry.dependencies]
 python = "^3.10"
 selene = "2.0.0rc2"
 pytest = "^7.4.0"
 allure-pytest = "^2.13.2"
+pydantic = "1.10.7"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
