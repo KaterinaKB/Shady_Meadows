@@ -3,16 +3,13 @@ from selene import browser
 
 
 class MainPage:
-
     def __init__(self):
-        self.open_booking_button = browser.element('.openBooking')
+        self.open_booking_button = browser.element(".openBooking")
 
-
-    @allure.step('Открываем стартовую страницу')
+    @allure.step("Open start page")
     def open(self):
-        browser.open('/')
+        browser.open("/")
 
-
-    @allure.step('Открываем форму бронирования')
+    @allure.step("Open the booking form")
     def press_open_booking_button(self):
         self.open_booking_button.click()

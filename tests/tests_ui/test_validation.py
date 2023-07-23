@@ -48,7 +48,7 @@ class TestsValidationOfBookingForm:
 
     @allure.story('Lastname field validation')
     @allure.severity(Severity.NORMAL)
-    @allure.title('Test for display error: "{expected_error}", test lastname used: "{firstname}"')
+    @allure.title('Test for display error: "{expected_error}", test lastname used: "{lastname}"')
     @pytest.mark.parametrize(
         "lastname, expected_error",
         [
@@ -82,7 +82,7 @@ class TestsValidationOfBookingForm:
 
     @allure.story('Email field validation')
     @allure.severity(Severity.NORMAL)
-    @allure.title('Test for display error: "{expected_error}", test email used: "{firstname}"')
+    @allure.title('Test for display error: "{expected_error}", test email used: "{email}"')
     @pytest.mark.parametrize(
         "email, expected_error",
         [("", e.email_is_blank), ("test.ru", e.wrong_format_of_email)],
@@ -108,7 +108,7 @@ class TestsValidationOfBookingForm:
 
     @allure.story('Phone field validation')
     @allure.severity(Severity.NORMAL)
-    @allure.title('Test for display error: "{expected_error}", test phone used: "{firstname}"')
+    @allure.title('Test for display error: "{expected_error}", test phone used: "{phone}"')
     @pytest.mark.parametrize(
         "phone, expected_error",
         [

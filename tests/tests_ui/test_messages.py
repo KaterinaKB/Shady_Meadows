@@ -19,14 +19,7 @@ class TestsMessages:
         app.main_page.press_open_booking_button()
 
         # WHEN
-        (
-            app.message_form.fill_name(client.firstname)
-            .fill_email(client.email)
-            .fill_phone(client.phone)
-            .fill_subject(client.subject)
-            .fill_message(client.message)
-            .submit()
-        )
+        app.message_form.send_message(client)
 
         # THEN
         app.message_form.check_reply_to_message(client.firstname, client.subject)
@@ -37,14 +30,7 @@ class TestsMessages:
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
-        (
-            app.message_form.fill_name(client.firstname)
-            .fill_email(client.email)
-            .fill_phone(client.phone)
-            .fill_subject(client.subject)
-            .fill_message(client.message)
-            .submit()
-        )
+        app.message_form.send_message(client)
 
         # WHEN
         app.admin_page.login()
