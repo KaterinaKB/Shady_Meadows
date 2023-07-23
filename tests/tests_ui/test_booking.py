@@ -8,17 +8,17 @@ from shady_meadows.data.client_and_booking import generate_booking_dates
 from shady_meadows.data import errors
 
 
-@allure.epic('Бронирование')
-@allure.feature('Создание брони')
+@allure.epic('Booking')
+@allure.feature('Booking creation')
+@allure.label('owner', 'Voronova K.')
 class TestsBooking:
 
 
-    @allure.story('Отображение стоимости бронирования')
+    @allure.story('Booking price display')
     @allure.severity(Severity.CRITICAL)
-    @allure.label('owner', 'Voronova K.')
-    @allure.title('Тест расчета полной стоимости бронирования за {duration} ночей')
+    @allure.title('Test for calculating the total cost of booking for {duration} nights')
     @pytest.mark.parametrize("duration", [1, 12], ids=["One night", "Twelve nights"])
-    def test_total_price_of_a_reservation(self, setup_browser, duration):
+    def test_total_price_of_a_reservation(self, duration):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -33,8 +33,7 @@ class TestsBooking:
 
 
     @allure.severity(Severity.BLOCKER)
-    @allure.label('owner', 'Voronova K.')
-    @allure.title('Тест создания брони')
+    @allure.title('Test for booking creation')
     def test_booking_creation(self, setup_browser):
         # GIVEN
         app.main_page.open()
@@ -55,8 +54,7 @@ class TestsBooking:
 
 
     @allure.severity(Severity.NORMAL)
-    @allure.label('owner', 'Voronova K.')
-    @allure.title('Тест корректности дат в подтверждении бронирования')
+    @allure.title('Test for dates in the booking confirmation')
     def test_confirmation_data_after_booking(self, setup_browser):
         # GIVEN
         app.main_page.open()
@@ -77,8 +75,7 @@ class TestsBooking:
 
 
     @allure.severity(Severity.CRITICAL)
-    @allure.label('owner', 'Voronova K.')
-    @allure.title('Тест невозможности бронирования в занятые даты')
+    @allure.title('Test for not being able to book on busy dates')
     def test_if_registration_is_not_possible_on_an_unavailable_day(self, setup_browser):
         # GIVEN
         app.main_page.open()

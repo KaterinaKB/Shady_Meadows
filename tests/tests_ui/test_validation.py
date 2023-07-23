@@ -8,13 +8,13 @@ from shady_meadows.data.client_and_booking import generate_booking_dates
 from shady_meadows.data import errors as e
 
 
-@allure.epic('Бронирование')
-@allure.feature('Валидация полей формы бронирования')
+@allure.epic('Booking')
+@allure.feature('Booking Form Field Validation')
+@allure.label('owner', 'Voronova K.')
 class TestsValidationOfBookingForm:
-    @allure.story('Валидация поля Имя')
+    @allure.story('Firstname field validation')
     @allure.severity(Severity.NORMAL)
-    @allure.label('owner', 'Voronova K.')
-    @allure.title('Тест отображения ошибки "{expected_error}", используемое тестовое имя: "{firstname}"')
+    @allure.title('Test for display error: "{expected_error}", test name used: "{firstname}"')
     @pytest.mark.parametrize(
         "firstname, expected_error",
         [
@@ -46,10 +46,9 @@ class TestsValidationOfBookingForm:
         # THEN
         app.booking_form.check_error_text(expected_error)
 
-    @allure.story('Валидация поля Фамилия')
+    @allure.story('Lastname field validation')
     @allure.severity(Severity.NORMAL)
-    @allure.label('owner', 'Voronova K.')
-    @allure.title('Тест отображения ошибки "{expected_error}", используемая тестовая фамилия: "{lastname}"')
+    @allure.title('Test for display error: "{expected_error}", test lastname used: "{firstname}"')
     @pytest.mark.parametrize(
         "lastname, expected_error",
         [
@@ -81,10 +80,9 @@ class TestsValidationOfBookingForm:
         # THEN
         app.booking_form.check_error_text(expected_error)
 
-    @allure.story('Валидация поля Электронная почта')
+    @allure.story('Email field validation')
     @allure.severity(Severity.NORMAL)
-    @allure.label('owner', 'Voronova K.')
-    @allure.title('Тест отображения ошибки "{expected_error}", используемая тестовая э.почта: "{email}"')
+    @allure.title('Test for display error: "{expected_error}", test email used: "{firstname}"')
     @pytest.mark.parametrize(
         "email, expected_error",
         [("", e.email_is_blank), ("test.ru", e.wrong_format_of_email)],
@@ -108,10 +106,9 @@ class TestsValidationOfBookingForm:
         # THEN
         app.booking_form.check_error_text(expected_error)
 
-    @allure.story('Валидация поля Телефон')
+    @allure.story('Phone field validation')
     @allure.severity(Severity.NORMAL)
-    @allure.label('owner', 'Voronova K.')
-    @allure.title('Тест отображения ошибки "{expected_error}", используемый тестовый телефон: "{phone}"')
+    @allure.title('Test for display error: "{expected_error}", test phone used: "{firstname}"')
     @pytest.mark.parametrize(
         "phone, expected_error",
         [
@@ -145,8 +142,7 @@ class TestsValidationOfBookingForm:
 
 
     @allure.severity(Severity.NORMAL)
-    @allure.label('owner', 'Voronova K.')
-    @allure.title('Тест отображения ошибки при незаполненных датах бронирования')
+    @allure.title('Test for error display in case of blank booking dates')
     def test_validation_dates_in_booking_form(self, setup_browser):
         # GIVEN
         app.main_page.open()

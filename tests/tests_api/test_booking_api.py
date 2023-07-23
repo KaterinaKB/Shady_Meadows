@@ -3,7 +3,6 @@ import requests
 from allure_commons._allure import step
 from allure_commons.types import Severity
 from jsonschema.validators import validate
-from project_config import project_config
 from shady_meadows.data.client_and_booking import client, generate_booking_dates
 from shady_meadows.model.application import app
 from shady_meadows.utils.load_json_schema import load_json_schema
@@ -15,7 +14,7 @@ from shady_meadows.utils.load_json_schema import load_json_schema
 class TestBookingAPI:
 
     @allure.severity(Severity.BLOCKER)
-    @allure.title('Check status code in booking creation response')
+    @allure.title('Test for status code in booking creation response')
     def test_create_booking_returns_200(self):
         # WHEN
         with step("Generate booking dates"):
@@ -42,7 +41,7 @@ class TestBookingAPI:
         app.api.find_booking_id_and_delete_booking(client)
 
     @allure.severity(Severity.CRITICAL)
-    @allure.title('Check booking info in booking creation response')
+    @allure.title('Test for booking info in booking creation response')
     def test_create_booking_returns_right_booking_info(self):
         # WHEN
         with step("Generate booking dates"):
@@ -77,7 +76,7 @@ class TestBookingAPI:
         app.api.find_booking_id_and_delete_booking(client)
 
     @allure.severity(Severity.BLOCKER)
-    @allure.title('Validate schema booking creation response')
+    @allure.title('Test for schema of booking creation response')
     def test_create_booking_schema_validation(self):
         # WHEN
         with step("Generate booking dates"):

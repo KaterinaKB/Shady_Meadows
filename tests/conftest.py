@@ -10,11 +10,11 @@ from selenium import webdriver
 from project_config import project_config
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="function", autouse=True)
 def setup_browser():
 
-    # options = webdriver.ChromeOptions()
-    # options.browser_version = '100.0'
+    options = webdriver.ChromeOptions()
+    options.browser_version = '100.0'
     # options.set_capability(
     #     'selenoid:options',
     #     {
@@ -33,7 +33,6 @@ def setup_browser():
     browser.config.base_url = "https://automationintesting.online"
     browser.config.window_width = 1920
     browser.config.window_height = 1080
-
 
     yield
 
