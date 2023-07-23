@@ -12,5 +12,8 @@ class ProjectConfig(pydantic.BaseSettings):
 
     admin_login: str
     admin_pwd: str
+    login: str
+    password: str
+
 
 project_config = ProjectConfig(dotenv.find_dotenv())

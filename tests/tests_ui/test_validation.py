@@ -8,13 +8,15 @@ from shady_meadows.data.client_and_booking import generate_booking_dates
 from shady_meadows.data import errors as e
 
 
-@allure.epic('Booking')
-@allure.feature('Booking Form Field Validation')
-@allure.label('owner', 'Voronova K.')
+@allure.epic("Booking")
+@allure.feature("Booking Form Field Validation")
+@allure.label("owner", "Voronova K.")
 class TestsValidationOfBookingForm:
-    @allure.story('Firstname field validation')
+    @allure.story("Firstname field validation")
     @allure.severity(Severity.NORMAL)
-    @allure.title('Test for display error: "{expected_error}", test name used: "{firstname}"')
+    @allure.title(
+        'Test for display error: "{expected_error}", test name used: "{firstname}"'
+    )
     @pytest.mark.parametrize(
         "firstname, expected_error",
         [
@@ -28,7 +30,9 @@ class TestsValidationOfBookingForm:
             "Too long firstname (19 symbols)",
         ],
     )
-    def test_validation_firstname_in_booking_form(self, setup_browser, firstname, expected_error):
+    def test_validation_firstname_in_booking_form(
+        self, setup_browser, firstname, expected_error
+    ):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -46,9 +50,11 @@ class TestsValidationOfBookingForm:
         # THEN
         app.booking_form.check_error_text(expected_error)
 
-    @allure.story('Lastname field validation')
+    @allure.story("Lastname field validation")
     @allure.severity(Severity.NORMAL)
-    @allure.title('Test for display error: "{expected_error}", test lastname used: "{lastname}"')
+    @allure.title(
+        'Test for display error: "{expected_error}", test lastname used: "{lastname}"'
+    )
     @pytest.mark.parametrize(
         "lastname, expected_error",
         [
@@ -62,7 +68,9 @@ class TestsValidationOfBookingForm:
             "Too long lastname (31 symbols)",
         ],
     )
-    def test_validation_lastname_in_booking_form(self, setup_browser, lastname, expected_error):
+    def test_validation_lastname_in_booking_form(
+        self, setup_browser, lastname, expected_error
+    ):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -80,15 +88,19 @@ class TestsValidationOfBookingForm:
         # THEN
         app.booking_form.check_error_text(expected_error)
 
-    @allure.story('Email field validation')
+    @allure.story("Email field validation")
     @allure.severity(Severity.NORMAL)
-    @allure.title('Test for display error: "{expected_error}", test email used: "{email}"')
+    @allure.title(
+        'Test for display error: "{expected_error}", test email used: "{email}"'
+    )
     @pytest.mark.parametrize(
         "email, expected_error",
         [("", e.email_is_blank), ("test.ru", e.wrong_format_of_email)],
         ids=["Blank email", "Email without @"],
     )
-    def test_validation_email_in_booking_form(self, setup_browser, email, expected_error):
+    def test_validation_email_in_booking_form(
+        self, setup_browser, email, expected_error
+    ):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -106,9 +118,11 @@ class TestsValidationOfBookingForm:
         # THEN
         app.booking_form.check_error_text(expected_error)
 
-    @allure.story('Phone field validation')
+    @allure.story("Phone field validation")
     @allure.severity(Severity.NORMAL)
-    @allure.title('Test for display error: "{expected_error}", test phone used: "{phone}"')
+    @allure.title(
+        'Test for display error: "{expected_error}", test phone used: "{phone}"'
+    )
     @pytest.mark.parametrize(
         "phone, expected_error",
         [
@@ -122,7 +136,9 @@ class TestsValidationOfBookingForm:
             "Too long phone (22 symbols)",
         ],
     )
-    def test_validation_phone_in_booking_form(self, setup_browser, phone, expected_error):
+    def test_validation_phone_in_booking_form(
+        self, setup_browser, phone, expected_error
+    ):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -140,9 +156,8 @@ class TestsValidationOfBookingForm:
         # THEN
         app.booking_form.check_error_text(expected_error)
 
-
     @allure.severity(Severity.NORMAL)
-    @allure.title('Test for error display in case of blank booking dates')
+    @allure.title("Test for error display in case of blank booking dates")
     def test_validation_dates_in_booking_form(self, setup_browser):
         # GIVEN
         app.main_page.open()
