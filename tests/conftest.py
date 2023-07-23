@@ -1,15 +1,11 @@
 import logging
 
 import pytest
-import requests
 from selene import browser
-# from demoqa.utils import attachments as attach
-# from project_config import project_config
 from selenium import webdriver
-
-from project_config import project_config
 from shady_meadows.data.client_and_booking import client
 from shady_meadows.model.application import app
+from shady_meadows.utils import attachments as attach
 
 
 @pytest.fixture(scope="function")
@@ -38,12 +34,12 @@ def setup_browser():
 
     yield
 
-    # attach.add_html(browser)
-    # attach.add_logs(browser)
-    # attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_screenshot(browser)
     # attach.add_video(browser)
 
     browser.quit()
+
 
 @pytest.fixture()
 def delete_data_after_test():
