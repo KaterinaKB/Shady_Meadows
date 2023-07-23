@@ -7,7 +7,7 @@
 
 > ➠ [Technology stack](#Technology_stack)
 >
-> ➠ [Covered functionality](#covered_functionality)
+> ➠ [Covered functionality](#сovered_functionality)
 >
 > ➠ [Running tests from the terminal](#Running_tests)
 >
@@ -95,15 +95,15 @@ allure serve ./allure-results
 </p>
 
 
-## <a name="telegram_notofocation"></a>  <img src="images/telegram.png" height="30"  alt="Allure"/></a> Telegram Notification
+## <a name="telegram_notification"></a>  <img src="images/telegram.png" height="30"  alt="Allure"/></a> Telegram Notification
 
 
 <p align="center">
 <img title="Allure Overview Dashboard" src="images/ReportFromBot.png" >
 </p>
 
-## <a name="selenoid_run"></a> Selenoid Test Run example
-### <img src="images/selenoid.svg" height="25" alt="Jenkins"/></a> Video with test run</a>
+## <img src="images/selenoid.svg" height="25" alt="Jenkins"/> <a name="selenoid_run"></a> Selenoid Test Run example
+### </a> Video with test run</a>
 <p align="center">
 <img title="selenoid test run" src="images/VideoWithTestRun.gif">
 </p>
