@@ -18,7 +18,7 @@ class TestsBooking:
     @allure.severity(Severity.CRITICAL)
     @allure.title('Test for calculating the total cost of booking for {duration} nights')
     @pytest.mark.parametrize("duration", [1, 12], ids=["One night", "Twelve nights"])
-    def test_total_price_of_a_reservation(self, duration):
+    def test_total_price_of_a_reservation(self, setup_browser, duration):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()

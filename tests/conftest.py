@@ -10,7 +10,7 @@ from selenium import webdriver
 from project_config import project_config
 
 
-@pytest.fixture(scope="function", autouse=True)
+@pytest.fixture(scope="function")
 def setup_browser():
 
     options = webdriver.ChromeOptions()
@@ -23,7 +23,7 @@ def setup_browser():
     #         'enableLog': True,
     #     },
     # )
-    # browser.config.driver_options = options
+    browser.config.driver_options = options
     #
     # browser.config.driver_remote_url = (
     #     f'https://{project_config.login_field}:{project_config.password_field}@'
@@ -42,4 +42,3 @@ def setup_browser():
     # attach.add_video(browser)
 
     browser.quit()
-
