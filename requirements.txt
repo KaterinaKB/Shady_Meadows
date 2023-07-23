@@ -1,4 +1,4 @@
-selene == 2.0.0rc2
+selene == 2.0.0rc3
 pytest == 7.4.0
 allure-pytest == 2.13.2
 pydantic == 1.10.7
