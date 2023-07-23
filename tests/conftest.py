@@ -8,6 +8,8 @@ from selene import browser
 from selenium import webdriver
 
 from project_config import project_config
+from shady_meadows.data.client_and_booking import client
+from shady_meadows.model.application import app
 
 
 @pytest.fixture(scope="function")
@@ -42,3 +44,9 @@ def setup_browser():
     # attach.add_video(browser)
 
     browser.quit()
+
+@pytest.fixture()
+def delete_data_after_test():
+
+    yield
+    app.api.find_booking_id_and_delete_booking(client)
