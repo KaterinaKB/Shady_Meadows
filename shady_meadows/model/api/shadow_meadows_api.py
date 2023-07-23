@@ -3,18 +3,19 @@ import requests
 
 from project_config import project_config
 from shady_meadows.data.client_and_booking import Client
+from shady_meadows.utils.CustomSession import CustomSession
 
 
 class ShadowMeadowsAPI:
     def __init__(self):
-        self.base_url = "https://automationintesting.online"
+        self.session = CustomSession("https://automationintesting.online")
         self.authorization_cookie = None
         self.booking_id = None
 
     @allure.step('Login as admin')
     def login_as_admin(self):
-        response = requests.post(
-            url=f"{self.base_url}/auth/login",
+        response = self.session.post(
+            url="/auth/login",
             json={
                 "username": project_config.admin_login,
                 "password": project_config.admin_pwd
@@ -26,8 +27,8 @@ class ShadowMeadowsAPI:
 
     @allure.step('Find booking id by client information')
     def find_booking_id_by_client(self, client = Client):
-        response = requests.get(
-            url=f'{self.base_url}/booking/', cookies={"token": self.authorization_cookie},
+        response = self.session.get(
+            url='/booking/', cookies={"token": self.authorization_cookie},
             params={'roomid': client.room}
         )
 
@@ -38,8 +39,8 @@ class ShadowMeadowsAPI:
 
     @allure.step('Create booking since {start_date} till {end_date}')
     def create_booking(self, start_date, end_date, client=Client):
-        response = requests.post(
-            url=f'{self.base_url}/booking/',
+        response = self.session.post(
+            url='/booking/',
             json={
                 "bookingid": 0,
                 "roomid": client.room,
@@ -59,8 +60,8 @@ class ShadowMeadowsAPI:
 
     @allure.step('Delete booking')
     def delete_booking(self):
-        requests.delete(
-            url=f'{self.base_url}/booking/{self.booking_id}', cookies={"token": self.authorization_cookie}
+        self.session.delete(
+            url=f'/booking/{self.booking_id}', cookies={"token": self.authorization_cookie}
         )
 
     @allure.step('POSTCONDITION: find booking id and delete booking')

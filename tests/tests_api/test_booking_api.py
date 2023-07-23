@@ -15,13 +15,13 @@ class TestBookingAPI:
 
     @allure.severity(Severity.BLOCKER)
     @allure.title('Test for status code in booking creation response')
-    def test_create_booking_returns_200(self):
+    def test_create_booking_returns_201(self):
         # WHEN
         with step("Generate booking dates"):
-            start_date, end_date = generate_booking_dates(10, 3)
+            start_date, end_date = generate_booking_dates(18, 3)
         with step(f"Create reservation since {start_date} to {end_date}"):
-            response = requests.post(
-                url=f"{app.api.base_url}/booking/",
+            response = app.api.session.post(
+                url="/booking/",
                 json={
                     "bookingid": 0,
                     "roomid": client.room,
@@ -45,10 +45,10 @@ class TestBookingAPI:
     def test_create_booking_returns_right_booking_info(self):
         # WHEN
         with step("Generate booking dates"):
-            start_date, end_date = generate_booking_dates(10, 3)
+            start_date, end_date = generate_booking_dates(18, 3)
         with step(f"Create reservation since {start_date} to {end_date}"):
-            response = requests.post(
-                url=f"{app.api.base_url}/booking/",
+            response = app.api.session.post(
+                url="/booking/",
                 json={
                     "bookingid": 0,
                     "roomid": client.room,
@@ -80,10 +80,10 @@ class TestBookingAPI:
     def test_create_booking_schema_validation(self):
         # WHEN
         with step("Generate booking dates"):
-            start_date, end_date = generate_booking_dates(10, 3)
+            start_date, end_date = generate_booking_dates(18, 3)
         with step(f"Create reservation since {start_date} to {end_date}"):
-            response = requests.post(
-                url=f"{app.api.base_url}/booking/",
+            response = app.api.session.post(
+                url="/booking/",
                 json={
                     "bookingid": 0,
                     "roomid": client.room,
@@ -108,14 +108,14 @@ class TestBookingAPI:
     def test_get_information_about_booking_returns_200(self):
         # GIVEN
         with step("Generate booking dates"):
-            start_date, end_date = generate_booking_dates(10, 3)
+            start_date, end_date = generate_booking_dates(18, 3)
         app.api.create_booking(start_date, end_date, client)
 
         # WHEN
         app.api.login_as_admin()
         with step("Get booking information"):
-            response = requests.get(
-                url=f"{app.api.base_url}/booking/{app.api.booking_id}",
+            response = app.api.session.get(
+                url=f"/booking/{app.api.booking_id}",
                 cookies={"token": app.api.authorization_cookie},
             )
 
@@ -130,14 +130,14 @@ class TestBookingAPI:
     def test_delete_reservation_returns_202(self):
         # GIVEN
         with step("Generate booking dates"):
-            start_date, end_date = generate_booking_dates(10, 3)
+            start_date, end_date = generate_booking_dates(18, 3)
         app.api.create_booking(start_date, end_date, client)
 
         # WHEN
         app.api.login_as_admin()
         with step("Delete reservation"):
-            response = requests.delete(
-                url=f"{app.api.base_url}/booking/{app.api.booking_id}",
+            response = app.api.session.delete(
+                url=f"/booking/{app.api.booking_id}",
                 cookies={"token": app.api.authorization_cookie},
             )
 
