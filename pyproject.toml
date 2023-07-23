@@ -1,5 +1,7 @@
 [tool.pytest.ini_options]
 addopts = "--clean-alluredir --alluredir=allure-results"
 disable_test_id_escaping_and_forfeit_all_rights_to_community_support = 'True'
+log_cli = 1
+log_level = 'INFO'
 
 

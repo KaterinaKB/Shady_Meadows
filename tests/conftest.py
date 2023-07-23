@@ -3,7 +3,6 @@ import logging
 import pytest
 from selene import browser
 from selenium import webdriver
-
 from project_config import project_config
 from shady_meadows.data.client_and_booking import client
 from shady_meadows.model.application import app
@@ -48,3 +47,5 @@ def setup_browser():
 def delete_data_after_test():
     yield
     app.api.find_booking_id_and_delete_booking(client)
+
+
