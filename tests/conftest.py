@@ -1,11 +1,16 @@
+import logging
+
 import pytest
+import requests
 from selene import browser
 # from demoqa.utils import attachments as attach
 # from project_config import project_config
 from selenium import webdriver
 
+from project_config import project_config
 
-@pytest.fixture(scope="function", autouse=True)
+
+@pytest.fixture(scope="function")
 def setup_browser():
 
     # options = webdriver.ChromeOptions()
@@ -29,6 +34,7 @@ def setup_browser():
     browser.config.window_width = 1920
     browser.config.window_height = 1080
 
+
     yield
 
     # attach.add_html(browser)
@@ -37,3 +43,4 @@ def setup_browser():
     # attach.add_video(browser)
 
     browser.quit()
+

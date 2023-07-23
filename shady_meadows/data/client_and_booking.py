@@ -16,13 +16,15 @@ class Client:
     phone: str
     subject: str
     message: str
+    room: int
 
 
 client = Client(
     firstname='TestName',
-    lastname='TestLastName',
+    lastname='TestLastname',
     email='test@test.ru',
     phone='+7(911)123-45-67',
     subject='Super important subject',
-    message='Super important message'
+    message='Super important message',
+    room=1
 )

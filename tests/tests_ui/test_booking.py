@@ -18,7 +18,7 @@ class TestsBooking:
     @allure.label('owner', 'Voronova K.')
     @allure.title('Тест расчета полной стоимости бронирования за {duration} ночей')
     @pytest.mark.parametrize("duration", [1, 12], ids=["One night", "Twelve nights"])
-    def test_total_price_of_a_reservation(self, duration):
+    def test_total_price_of_a_reservation(self, setup_browser, duration):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -35,7 +35,7 @@ class TestsBooking:
     @allure.severity(Severity.BLOCKER)
     @allure.label('owner', 'Voronova K.')
     @allure.title('Тест создания брони')
-    def test_booking_creation(self):
+    def test_booking_creation(self, setup_browser):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -57,7 +57,7 @@ class TestsBooking:
     @allure.severity(Severity.NORMAL)
     @allure.label('owner', 'Voronova K.')
     @allure.title('Тест корректности дат в подтверждении бронирования')
-    def test_confirmation_data_after_booking(self):
+    def test_confirmation_data_after_booking(self, setup_browser):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -79,7 +79,7 @@ class TestsBooking:
     @allure.severity(Severity.CRITICAL)
     @allure.label('owner', 'Voronova K.')
     @allure.title('Тест невозможности бронирования в занятые даты')
-    def test_if_registration_is_not_possible_on_an_unavailable_day(self):
+    def test_if_registration_is_not_possible_on_an_unavailable_day(self, setup_browser):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()

@@ -28,7 +28,7 @@ class TestsValidationOfBookingForm:
             "Too long firstname (19 symbols)",
         ],
     )
-    def test_validation_firstname_in_booking_form(self, firstname, expected_error):
+    def test_validation_firstname_in_booking_form(self, setup_browser, firstname, expected_error):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -63,7 +63,7 @@ class TestsValidationOfBookingForm:
             "Too long lastname (31 symbols)",
         ],
     )
-    def test_validation_lastname_in_booking_form(self, lastname, expected_error):
+    def test_validation_lastname_in_booking_form(self, setup_browser, lastname, expected_error):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -90,7 +90,7 @@ class TestsValidationOfBookingForm:
         [("", e.email_is_blank), ("test.ru", e.wrong_format_of_email)],
         ids=["Blank email", "Email without @"],
     )
-    def test_validation_email_in_booking_form(self, email, expected_error):
+    def test_validation_email_in_booking_form(self, setup_browser, email, expected_error):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -125,7 +125,7 @@ class TestsValidationOfBookingForm:
             "Too long phone (22 symbols)",
         ],
     )
-    def test_validation_phone_in_booking_form(self, phone, expected_error):
+    def test_validation_phone_in_booking_form(self, setup_browser, phone, expected_error):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -147,7 +147,7 @@ class TestsValidationOfBookingForm:
     @allure.severity(Severity.NORMAL)
     @allure.label('owner', 'Voronova K.')
     @allure.title('Тест отображения ошибки при незаполненных датах бронирования')
-    def test_validation_dates_in_booking_form(self):
+    def test_validation_dates_in_booking_form(self, setup_browser):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()

@@ -13,7 +13,7 @@ class TestsMessages:
     @allure.severity(Severity.BLOCKER)
     @allure.label('owner', 'Voronova K.')
     @allure.title('Тест отправки сообщения в администрацию отеля')
-    def test_message_sending(self):
+    def test_message_sending(self, setup_browser):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -34,7 +34,7 @@ class TestsMessages:
     @allure.severity(Severity.CRITICAL)
     @allure.label('owner', 'Voronova K.')
     @allure.title('Тест корректности содержимого сообщения от клиента на странице администратора')
-    def test_receiving_message_by_admin(self):
+    def test_receiving_message_by_admin(self, setup_browser):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -48,8 +48,7 @@ class TestsMessages:
         )
 
         # WHEN
-        app.admin_page.open()
-        app.admin_page.login(project_config.admin_login, project_config.admin_pwd)
+        app.admin_page.login()
         app.admin_page.go_to_messages_page()
 
         # THEN

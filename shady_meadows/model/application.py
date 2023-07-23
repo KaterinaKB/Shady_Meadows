@@ -1,5 +1,6 @@
 from selene import browser
 
+from shady_meadows.model.api.shadow_meadows_api import ShadowMeadowsAPI
 from shady_meadows.model.components.booking_form import BookingForm
 from shady_meadows.model.components.message_form import MessageForm
 from shady_meadows.model.pages.admin_messages_page import AdminMessagesPage
@@ -14,6 +15,7 @@ class Application:
         self.message_form = MessageForm()
         self.admin_page = AdminPage()
         self.admin_message_page = AdminMessagesPage()
+        self.api = ShadowMeadowsAPI()
 
 
 app = Application()
