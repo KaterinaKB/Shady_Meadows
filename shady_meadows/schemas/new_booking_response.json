@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "required": [
+        "bookingid",
+        "booking"
+    ],
+    "properties": {
+        "bookingid": {
+            "type": "integer"
+        },
+        "booking": {
+            "type": "object",
+            "required": [
+                "bookingid",
+                "roomid",
+                "firstname",
+                "lastname",
+                "depositpaid",
+                "bookingdates"
+            ],
+            "properties": {
+                "bookingid": {
+                    "type": "integer"
+                },
+                "roomid": {
+                    "type": "integer"
+                },
+                "firstname": {
+                    "type": "string"
+                },
+                "lastname": {
+                    "type": "string"
+                },
+                "depositpaid": {
+                    "type": "boolean"
+                },
+                "bookingdates": {
+                    "type": "object",
+                    "required": [
+                        "checkin",
+                        "checkout"
+                    ],
+                    "properties": {
+                        "checkin": {
+                            "type": "string"
+                        },
+                        "checkout": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,15 +1,22 @@
+import logging
+
 import pytest
+import requests
 from selene import browser
 # from demoqa.utils import attachments as attach
 # from project_config import project_config
 from selenium import webdriver
 
+from project_config import project_config
+from shady_meadows.data.client_and_booking import client
+from shady_meadows.model.application import app
 
-@pytest.fixture(scope="function", autouse=True)
+
+@pytest.fixture(scope="function")
 def setup_browser():
 
-    # options = webdriver.ChromeOptions()
-    # options.browser_version = '100.0'
+    options = webdriver.ChromeOptions()
+    options.browser_version = '100.0'
     # options.set_capability(
     #     'selenoid:options',
     #     {
@@ -18,7 +25,7 @@ def setup_browser():
     #         'enableLog': True,
     #     },
     # )
-    # browser.config.driver_options = options
+    browser.config.driver_options = options
     #
     # browser.config.driver_remote_url = (
     #     f'https://{project_config.login_field}:{project_config.password_field}@'
@@ -37,3 +44,9 @@ def setup_browser():
     # attach.add_video(browser)
 
     browser.quit()
+
+@pytest.fixture()
+def delete_data_after_test():
+
+    yield
+    app.api.find_booking_id_and_delete_booking(client)

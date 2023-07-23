@@ -6,14 +6,14 @@ from shady_meadows.data.client_and_booking import client
 from project_config import project_config
 
 
-@allure.epic('Сообщения')
-@allure.feature('Отправка сообщения')
+@allure.epic('Messages')
+@allure.feature('Sending a message')
+@allure.label('owner', 'Voronova K.')
 class TestsMessages:
 
     @allure.severity(Severity.BLOCKER)
-    @allure.label('owner', 'Voronova K.')
-    @allure.title('Тест отправки сообщения в администрацию отеля')
-    def test_message_sending(self):
+    @allure.title('Test for sending a message to the hotel administration')
+    def test_message_sending(self, setup_browser):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -32,9 +32,8 @@ class TestsMessages:
         app.message_form.check_reply_to_message(client.firstname, client.subject)
 
     @allure.severity(Severity.CRITICAL)
-    @allure.label('owner', 'Voronova K.')
-    @allure.title('Тест корректности содержимого сообщения от клиента на странице администратора')
-    def test_receiving_message_by_admin(self):
+    @allure.title('Test for the content of the message from the client on the admin page')
+    def test_receiving_message_by_admin(self, setup_browser):
         # GIVEN
         app.main_page.open()
         app.main_page.press_open_booking_button()
@@ -48,8 +47,7 @@ class TestsMessages:
         )
 
         # WHEN
-        app.admin_page.open()
-        app.admin_page.login(project_config.admin_login, project_config.admin_pwd)
+        app.admin_page.login()
         app.admin_page.go_to_messages_page()
 
         # THEN

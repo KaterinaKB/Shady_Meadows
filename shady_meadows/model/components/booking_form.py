@@ -1,6 +1,6 @@
 import allure
 from selene import browser, have, be
-from shady_meadows.model.utils import actions
+from shady_meadows.utils import actions
 
 
 class BookingForm:

@@ -1,6 +1,8 @@
 import allure
 from selene import browser, have, be
 
+from project_config import project_config
+
 
 class AdminPage:
 
@@ -16,13 +18,13 @@ class AdminPage:
         browser.open('/#/admin')
 
     @allure.step('Вводим логин администратора')
-    def fill_login(self, login):
-        self.login_field.type(login)
+    def fill_login(self):
+        self.login_field.type(project_config.admin_login)
         return self
 
     @allure.step('Вводим пароль администратора')
-    def fill_password(self, password):
-        self.password_field.type(password)
+    def fill_password(self):
+        self.password_field.type(project_config.admin_pwd)
         return self
 
     @allure.step('Нажимаем на кнопку авторизации')
@@ -30,8 +32,9 @@ class AdminPage:
         self.login_button.click()
 
     @allure.step('Авторизуемся в качестве администратора')
-    def login(self, login, password):
-        self.fill_login(login).fill_password(password).press_login_button()
+    def login(self):
+        self.open()
+        self.fill_login().fill_password().press_login_button()
 
     @allure.step('Переходим на страницу с сообщениями')
     def go_to_messages_page(self):

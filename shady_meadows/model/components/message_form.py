@@ -19,7 +19,7 @@ class MessageForm:
         return self
 
     @allure.step('Вводим адрес электронной почты {email}')
-    def fill_email(self,email):
+    def fill_email(self, email):
         self.email.type(email)
         return self
 
@@ -34,7 +34,7 @@ class MessageForm:
         return self
 
     @allure.step('Вводим текст сообщения {message}')
-    def fill_message(self,message):
+    def fill_message(self, message):
         self.message.type(message)
         return self
 
